@@ -1,0 +1,27 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="invoice_supplier_form_ticket">
+      <field name="name">account.invoice.supplier.form.ticket</field>
+      <field name="inherit_id" ref="account.invoice_supplier_form"></field>
+      <field name="model">account.invoice</field>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='type']" position="before">
+          <field name="ticket_ids" attrs="{'readonly': True}" widget="many2many_tags"></field>
+        </xpath>
+      </field>
+    </record>
+
+      <record id="" model="ir.ui.view">
+      <field name="inherit_id" ref="account.view_account_invoice_filter"></field>
+      <field name="type">search</field>
+      <field name="name">account.invoice.select.tickets</field>
+      <field name="model">account.invoice</field>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='journal_id']" position="after">
+          <field name="ticket_ids" operator="ilike"/>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

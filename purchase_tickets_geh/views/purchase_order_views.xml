@@ -1,0 +1,52 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="purchase_order_form_ticket">
+      <field name="name">purchase.order.form.ticket</field>
+      <field name="inherit_id" ref="purchase.purchase_order_form"></field>
+      <field name="model">purchase.order</field>
+      <field name="arch" type="xml">
+        <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='company_id']" position="after">
+            <field name="ticket_id"></field>
+        </xpath>
+        <xpath expr="/form/sheet/notebook/page[last()]" position="after">
+          <page name="Tickets" string="Tickets">
+            <field name="ticket_ids">
+              <tree create="false" delete="false">
+                <field name="name"/>
+                <field name="date"/>
+              </tree>
+            </field>
+          </page>
+        </xpath>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="purchase_geh_tickets_form">
+      <field name="name">purchase.tickets.form</field>
+      <field name="model">purchase.tickets</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form string="Ticket de compra">
+          <group name="main">
+            <field name="name"></field>
+            <field name="date"></field>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <record id="" model="ir.ui.view">
+      <field name="inherit_id" ref="purchase.view_purchase_order_filter"></field>
+      <field name="type">search</field>
+      <field name="name">request.quotation.select.tickets</field>
+      <field name="model">purchase.order</field>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='name']" position="after">
+          <field name="ticket_ids" operator="ilike"/>
+        </xpath>
+      </field>
+    </record>
+
+  </data>
+</odoo>
