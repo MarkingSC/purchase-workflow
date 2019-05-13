@@ -23,8 +23,8 @@
     </record>
 
     <record model="ir.ui.view" id="purchase_geh_tickets_form">
-      <field name="name">purchase.tickets.form</field>
-      <field name="model">purchase.tickets</field>
+      <field name="name">purchase.ticket.form</field>
+      <field name="model">purchase.ticket</field>
       <field name="type">form</field>
       <field name="arch" type="xml">
         <form string="Ticket de compra">

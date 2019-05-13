@@ -4,9 +4,11 @@
 from odoo import models, fields, api
 
 class AccountInvoice(models.Model):
+
     _inherit ="account.invoice"
 
-    ticket_ids = fields.Many2many(string="tickets", comodel_name='purchase.tickets')
+    ticket_ids = fields.Many2many(string="tickets",
+                                  comodel_name='purchase.ticket')
 
     # Load all unsold PO lines (Replaced function)
     @api.onchange('purchase_id')
